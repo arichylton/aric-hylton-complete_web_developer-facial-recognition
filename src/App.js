@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 
 import Navigation from './components/Navigation/Navigation';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
@@ -10,7 +9,6 @@ import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Rank from './components/Rank/Rank';
 import './App.css';
-import { thisTypeAnnotation } from '@babel/types';
 
 const particlesOptions = {
 	particles: {
@@ -89,7 +87,7 @@ class App extends Component {
 
 	onButtonSubmit = () => {
 		this.setState({imageURL: this.state.input});					
-		fetch('http://localhost:3000/imageurl', {
+		fetch('https://glacial-escarpment-62383.herokuapp.com/imageurl', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -99,7 +97,7 @@ class App extends Component {
 		  .then(response => response.json())
 		  .then(response => {
 			if (response) {
-			  fetch('http://localhost:3000/image', {
+			  fetch('https://glacial-escarpment-62383.herokuapp.com/image', {
 				method: 'put',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({
